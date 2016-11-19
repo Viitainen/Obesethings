@@ -12,6 +12,7 @@
         <div class="col-xs-12">
             <div class="player">
                 <div class="player__slash">
+
                 </div>
                 <h3 class="player__name text-center"><a href="{{ action('PlayerController@show', $player->id) }}">{{ $player->name }}</a></h3>
                 <p class="q player__slogan text-center">
@@ -30,7 +31,7 @@
                     <div class="thing">
                         <h4>{{ $thing->title }}</h4>
                         <div class="video-container">
-                            <iframe width="100%" height="100%" src="{{ $thing->url }}" frameborder="0" allowfullscreen></iframe>
+                            <iframe width="100%"  height="100%" src="{{ $thing->url }}" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>

@@ -18,7 +18,7 @@
                     {{ $player->slogan }}
                 </p>
                 <p class="player__thingcount text-center">
-                        <i class="fa fa-video-camera"></i> {{ $player->things->count() }} clips
+                    <i class="fa fa-video-camera"></i> {{ $player->things->count() }} clips
                 </p>
             </div>
         </div>

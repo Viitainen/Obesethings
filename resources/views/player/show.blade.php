@@ -30,7 +30,7 @@
                     <div class="thing">
                         <h4>{{ $thing->title }}</h4>
                         <div class="video-container">
-                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/OYV4vIe0r04" frameborder="0" allowfullscreen></iframe>
+                            <iframe width="100%" height="100%" src="{{ $thing->url }}" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>

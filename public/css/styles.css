@@ -1,0 +1,354 @@
+.my-label {
+    background-color: #3d9872;
+    padding: 0.2em 0.4em;
+    border-radius: 5px;
+}
+
+/*HELPERS*/
+.inline-block {
+    display: inline-block !important;
+}
+
+.inline {
+    display: inline !important;
+}
+
+/* TEXT HELPERS */
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+/*END OF TEXT HELPERS*/
+
+.box-shadow-small {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.16), 0 1px 2px rgba(0,0,0,0.23);
+}
+
+.box-shadow-large {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+
+/*END OF HELPERS*/
+
+.q {
+  quotes: "“" "”" "‘" "’";
+}
+.q:before {
+    content: open-quote;
+}
+.q:after {
+    content: close-quote;
+}
+
+.player {
+    min-height: 6em;
+    padding: 1em;
+    background-color: #1e2429;
+    border-bottom: 15px solid #3d9872;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.16), 0 1px 2px rgba(0,0,0,0.23);
+    transition: border-color 1.5s;
+}
+
+.player__slash {
+    width: 80%;
+    margin-left: -60%;
+    transform: skewX(20deg);
+    background-color: #ffffff;
+    position: absolute;
+    height: 100%;
+    overflow-x: hidden;
+    top: 0;
+    z-index: 0;
+    transition: 1s;
+}
+
+.player:hover .player__slash {
+    background-color: #3d9872;
+    transform: skewX(-20deg);
+}
+
+.player:hover {
+    border-color: white;
+}
+
+
+.player a {
+    color: white;
+    transition: 0.4s;
+    background-color: #3d9872;
+    padding: 0.2em 0.4em;
+    border-radius: 5px;
+    font-size: 0.8em;
+}
+
+.player a:hover {
+    color: white;
+}
+
+.nav__item--blue {
+    background-color: #3097D1;
+    color: white;
+    transition: 0.2s;
+}
+
+.nav__item--blue a {
+    color: white !important;
+}
+
+.nav__item--blue:hover {
+    background-color: #333;
+}
+.players__player, .registrationkeys__registrationkey {
+    padding: 0.5em;
+    margin: 0.4em 0;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.16), 0 1px 2px rgba(0,0,0,0.23);
+    background-color: #1e2429;
+    color: white;
+}
+
+
+
+.players__player, .registrationkeys__registrationkey {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.4s;
+}
+
+
+.players__player:hover, .registrationkeys__registrationkey:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+.players__player__actions, .registrationkeys__registrationkey__actions {
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.players__player:hover .players__player__actions,
+.registrationkeys__registrationkey:hover .registrationkeys__registrationkey__actions {
+    opacity: 1;
+}
+
+.registrationkeys__registrationkey__actions {
+    flex-grow: 0;
+}
+
+.registrationkeys__registrationkey__valid-until {
+    flex-grow: 2;
+}
+
+
+.registrationkeys__registrationkey__key {
+    display: flex;
+    flex-grow: 15;
+    margin-right: 1em;
+}
+
+
+.player__things__thing {
+    margin-bottom: 1em;
+}
+
+.thing {
+    position: relative;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.16), 0 1px 2px rgba(0,0,0,0.23);
+    transition: 0.1s;
+    overflow:hidden;
+}
+
+.thing:hover {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.16), 0 2px 10px rgba(0,0,0,0.23);
+}
+
+.thing__actions {
+    opacity: 0;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: 0.2s;
+    background-color: #1e2429;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.16), 0 1px 2px rgba(0,0,0,0.23);
+    padding: 2px;
+}
+
+.thing__info {
+    font-weight: 600;
+}
+.btn-unstyled {
+    background: none;
+    border: none;
+}
+
+.thing:hover .thing__actions {
+    opacity: 1;
+}
+
+.video-container {
+    margin-bottom: 1em;
+}
+
+
+.icon {
+    margin: 5px;
+    color: black;
+}
+
+.icon.icon--green {
+    color: #3d9872;
+}
+
+
+@media screen and (max-width: 2000px) {
+
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 35px;
+        height: 0;
+        overflow: hidden;
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* MATERIAL */
+
+.material-jumbotron {
+    padding: 4em 6em;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.16), 0 1px 2px rgba(0,0,0,0.23);
+    margin-bottom: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.material-jumbotron h1 {
+    font-size: 64px;
+    color: #333;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+}
+
+@media screen and (max-width: 720px) {
+    .material-jumbotron {
+        padding: 1.5em 1em;
+    }
+
+    .material-jumbotron h1 {
+        font-size: 34px;
+    }
+}
+
+.material-btn {
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: ease-in-out .15s,box-shadow ease-in-out .15s;
+    background-color: white;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+.material-btn:not(.material-btn--primary):hover {
+    background-color: #ddd;
+}
+
+.material-btn.material-btn--primary:hover {
+    background-color: #2f7aa5;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+.material-btn.material-btn--primary {
+    background-color: #3097D1;
+    color: white;
+}
+
+.material-box, .material-box--rounded {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.16), 0 1px 2px rgba(0,0,0,0.23);
+    background-color: white;
+    padding: 15px;
+}
+
+.material-box--rounded {
+    border-radius: 3px;
+}
+
+.material-panel {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.16), 0 1px 2px rgba(0,0,0,0.23);
+    background: white;
+    margin-bottom: 10px;
+}
+
+.material-panel__heading {
+    border-bottom: 1px solid #ccc;
+    padding: 15px;
+}
+
+.material-panel__body {
+    padding: 15px;
+}
+
+/*END OF MATERIAL*/
+
+.qtip-custom {
+    background-color: #1e2429;
+    padding: 0.3em 0.5em;
+
+}
+
+.navbar-default {
+    background-color: #1e2429;
+}
+
+.navbar-default .navbar-nav>li>a {
+    border-bottom: 2px solid transparent;
+    transition: 0.5s;
+    color: white;
+}
+
+.navbar-default .navbar-nav>li:hover>a{
+    color: #3097d1;
+    border-bottom: 2px solid #3097d1;
+}
+
+.navbar-default .navbar-brand {
+    color: #3097d1;
+}

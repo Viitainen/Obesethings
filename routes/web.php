@@ -12,5 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->action('ThingController@index');
 });
+
+Route::resource('thing','ThingController');
+Route::resource('player','PlayerController');
+Route::resource('registrationkeys', 'RegistrationkeysController', ['except' => ['show','update','edit']]);
+
+
+//Route::get('/', 'ThingController@index');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

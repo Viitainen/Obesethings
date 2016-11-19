@@ -5,7 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Carbon\Carbon;
+
+use App\Registrationkey;
+
 
 class RegisterController extends Controller
 {
@@ -50,7 +55,13 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:10|confirmed',
+            'key' => [
+                'required',
+                Rule::exists('registrationkeys')->where(function($query) {
+                    $query->where('valid_until', ">=", Carbon::now())->where('claimed', false);
+                }),
+            ]
         ]);
     }
 
@@ -62,10 +73,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        Registrationkey::where('key', $data['key'])->update(['claimed' => true]);
+
+        return $user;
     }
 }

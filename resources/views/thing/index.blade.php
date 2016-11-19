@@ -20,14 +20,16 @@
                         {{ $player->slogan }}
                     </p>
                     <p class="player__thingcount text-center">
-                            <i class="fa fa-video-camera"></i> {{ $player->things->count() }} clips
+                        <i class="fa fa-video-camera"></i> {{ $player->things->count() }} clips
                     </p>
                 </div>
             </div>
         </div>
         <div class="row">
-
             @foreach($player->things as $thing)
+                @if($loop->index >= 4)
+                    @break
+                @endif
                 <div class="col-lg-6">
                     <div class="thing">
                         <h4>{{ $thing->title }}</h4>
@@ -48,6 +50,7 @@
                             </div>
                         </div>
                 </div>
+
                 @endforeach
         </div>
     @endforeach

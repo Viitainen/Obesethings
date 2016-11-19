@@ -15,8 +15,8 @@ Route::get('/', function () {
     return redirect()->action('ThingController@index');
 });
 
-Route::resource('thing','ThingController');
-Route::resource('player','PlayerController');
+Route::resource('things','ThingController');
+Route::resource('players','PlayerController');
 Route::resource('registrationkeys', 'RegistrationkeysController', ['except' => ['show','update','edit']]);
 
 

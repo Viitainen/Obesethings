@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Player;
 use App\Thing;
+use App\Http\Requests\StoreThing;
 
 class ThingController extends Controller
 {
@@ -23,7 +24,7 @@ class ThingController extends Controller
      */
     public function index()
     {
-        $players = Player::has('things')->with('things')->get();
+        $players = Player::has('things')->inRandomOrder()->with('things')->get();
         return view('thing.index', compact('players'));
     }
 
@@ -44,11 +45,12 @@ class ThingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreThing $request)
     {
-
         $thing = Thing::create(['title' => $request->input('title'), 'url' => $request->input('url')]);
+
         $thing->players()->attach($request->input('players'));
+
         return redirect()->action('ThingController@index')->with('status', 'Thing added.');
     }
 
@@ -85,7 +87,7 @@ class ThingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreThing $request, $id)
     {
         $thing = Thing::find($id);
         $thing->players()->sync($request->input('players'));

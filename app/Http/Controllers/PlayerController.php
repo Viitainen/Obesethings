@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Player;
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePlayer;
 
 class PlayerController extends Controller
 {
@@ -38,7 +39,7 @@ class PlayerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePlayer $request)
     {
         Player::create($request->all());
         return redirect()->action('PlayerController@index')->with('status', 'Player created');
@@ -75,10 +76,11 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePlayer $request, $id)
     {
         $player = Player::find($id);
         $player->update($request->all());
+
         return redirect()->action('PlayerController@show', $id)->with('status', 'Player Edited.');
     }
 

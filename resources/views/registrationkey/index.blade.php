@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <h1>Registrationkeys</h1>
+            <h1>Registration Keys</h1>
             {!! Form::open(['action' => 'RegistrationkeysController@store', 'class' => 'form']) !!}
-            {!! Form::submit('Create Thing', ['class' => 'material-btn']) !!}
+            {!! Form::submit('Create Registration Key', ['class' => 'material-btn']) !!}
             {!! Form::close() !!}
             <div class="registrationkeys">
                 @foreach ($keys as $key)

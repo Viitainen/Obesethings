@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            @include('shared.errors')
             <div class="material-panel">
                 <div class="material-panel__heading">Edit Player {{ $player->name }}</div>
                 <div class="material-panel__body">

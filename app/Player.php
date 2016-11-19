@@ -10,6 +10,7 @@ class Player extends Model
     protected $fillable = ['name','slogan'];
 
     public function things() {
-        return $this->belongsToMany('App\Thing')->withTimestamps();
+        return $this->belongsToMany('App\Thing')->latest()->withTimestamps();
     }
+
 }

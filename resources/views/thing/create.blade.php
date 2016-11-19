@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            @include('shared.errors')
             <div class="material-panel">
                 <div class="material-panel__heading">Add New Thing</div>
                 <div class="material-panel__body">
@@ -13,7 +14,7 @@
                         {!! Form::text('title', '', ['class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('url', 'Youtube Embed URL') !!}
+                        {!! Form::label('url', 'Embed URL') !!}
                         {!! Form::text('url', 'https://www.youtube.com/embed/', ['class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">

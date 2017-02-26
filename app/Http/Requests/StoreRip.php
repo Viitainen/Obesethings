@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreThing extends FormRequest
+class StoreRip extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +23,13 @@ class StoreThing extends FormRequest
      */
     public function rules()
     {
+
         return [
-            'title' => 'required|max:50|min:5|unique:things,title,'.$this->thing,
-            'url' => 'required|URL|unique:things,url,'.$this->thing,
+            'title' => 'required|max:50|min:5|unique:rips,title,'.$this->rip,
+            'url' => 'required|URL|unique:rips,url,'.$this->rip,
+            'place' => 'required|max:50',
+            'enemy' => 'required|max:50',
+            'level_of_stupidness' => 'required|numeric|max:10|min:1',
             'players' => 'required'
         ];
     }

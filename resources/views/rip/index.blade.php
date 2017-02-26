@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.app', ['page' => 'rip-page'])
 
 @section('content')
-<div class="container">
+<div class="container rip-page">
     <div class="row">
         <div class="col-xs-12">
-            <div class="material-jumbotron">
-                <h1>JUST OBESETHINGS</h1>
+            <div class="material-jumbotron jumbo-poe-background">
+                <h1>RIPS</h1>
             </div>
         </div>
     </div>
@@ -13,8 +13,8 @@
         <div class="col-xs-12">
             <div class="filters col-xs-12">
                 <div class="btn-group btn-block">
-                    <a class="btn material-btn col-md-6" href="{{ action('ThingController@index', ['q' => 'latest'])}}">Latest</a>
-                    <a class="btn material-btn col-md-6" href="{{ action('ThingController@index', ['q' => 'byplayer'])}}">By Player</a>
+                    <a class="btn material-btn col-md-6" href="{{ action('RipsController@index', ['q' => 'latest'])}}">Latest</a>
+                    <a class="btn material-btn col-md-6" href="{{ action('RipsController@index', ['q' => 'byplayer'])}}">By Player</a>
                 </div>
             </div>
         </div>
@@ -30,34 +30,34 @@
                         <p class="q player__slogan text-center">
                             {{ $player->slogan }}
                         </p>
-                        <p class="player__thingcount text-center">
-                            <i class="fa fa-video-camera"></i> {{ $player->things->count() }} clips
+                        <p class="player__ripcount text-center">
+                            <i class="fa fa-video-camera"></i> {{ $player->rips->count() }} clips
                         </p>
                     </div>
                 </div>
             </div>
             <div class="row">
-                @foreach($player->things as $thing)
+                @foreach($player->rips as $rip)
                     @if($loop->index >= 4)
                         @break
                     @endif
                     <div class="col-lg-6">
-                        <div class="thing">
-                            <h4>{{ $thing->title }}</h4>
-                            <span class="thing__actions">
-                                <a href="{{ action('ThingController@show', $thing->id) }}" title="Go to thing page."><i class="icon icon--green fa fa-eye"></i></a>
+                        <div class="rip">
+                            <h4>{{ $rip->title }}</h4>
+                            <span class="rip__actions">
+                                <a href="{{ action('RipsController@show', $rip->id) }}" title="Go to rip page."><i class="icon icon--red fa fa-eye"></i></a>
                                 @if(!Auth::guest())
-                                <a href="{{ action('ThingController@edit', $thing->id) }}" title="Edit thing."><i class="icon icon--green fa fa-edit"></i></a>
+                                <a href="{{ action('RipsController@edit', $rip->id) }}" title="Edit rip."><i class="icon icon--red fa fa-edit"></i></a>
                                     {!! Form::open(['method' => 'DELETE',
-                                        'action' => ['ThingController@destroy', $thing->id],
+                                        'action' => ['RipsController@destroy', $rip->id],
                                         'class' => 'form inline-block'])
                                         !!}
-                                        <button title="Delete thing." class="btn-unstyled" type="submit" name="button" onClick = "return confirm('Are you sure you want to delete this item?');"><i class="icon icon--green fa fa-trash-o"></i></button>
+                                        <button title="Delete rip." class="btn-unstyled" type="submit" name="button" onClick = "return confirm('Are you sure you want to delete this item?');"><i class="icon icon--red fa fa-trash-o"></i></button>
                                     {!! Form::close() !!}
                                 @endif
                             </span>
                             <div class="video-container">
-                                    <iframe width="100%" height="100%" src="{{ $thing->url }}" frameborder="0" allowfullscreen></iframe>
+                                    <iframe width="100%" height="100%" src="{{ $rip->url }}" frameborder="0" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
@@ -65,31 +65,31 @@
             </div>
         @endforeach
     @endif
-    @if(isset($things) && $things)
+    @if(isset($rips) && $rips)
         <div class="row">
-            <div class="things">
-                @foreach($things as $thing)
+            <div class="rips">
+                @foreach($rips as $rip)
                     <div class="col-lg-6">
-                        <div class="thing">
-                            <h4>{{ $thing->title }}</h4>
-                            <span class="thing__actions">
-                                <a href="{{ action('ThingController@show', $thing->id) }}" title="Go to thing page."><i class="icon icon--green fa fa-eye"></i></a>
+                        <div class="rip">
+                            <h4>{{ $rip->title }}</h4>
+                            <span class="rip__actions">
+                                <a href="{{ action('RipsController@show', $rip->id) }}" title="Go to rip page."><i class="icon icon--red fa fa-eye"></i></a>
                                 @if(!Auth::guest())
-                                <a href="{{ action('ThingController@edit', $thing->id) }}" title="Edit thing."><i class="icon icon--green fa fa-edit"></i></a>
+                                <a href="{{ action('RipsController@edit', $rip->id) }}" title="Edit rip."><i class="icon icon--red fa fa-edit"></i></a>
                                     {!! Form::open(['method' => 'DELETE',
-                                        'action' => ['ThingController@destroy', $thing->id],
+                                        'action' => ['RipsController@destroy', $rip->id],
                                         'class' => 'form inline-block'])
                                         !!}
-                                        <button title="Delete thing." class="btn-unstyled" type="submit" name="button" onClick = "return confirm('Are you sure you want to delete this item?');"><i class="icon icon--green fa fa-trash-o"></i></button>
+                                        <button title="Delete rip." class="btn-unstyled" type="submit" name="button" onClick = "return confirm('Are you sure you want to delete this item?');"><i class="icon icon--red fa fa-trash-o"></i></button>
                                     {!! Form::close() !!}
                                 @endif
                             </span>
                             <div class="video-container">
-                                    <iframe width="100%" height="100%" src="{{ $thing->url }}" frameborder="0" allowfullscreen></iframe>
+                                    <iframe width="100%" height="100%" src="{{ $rip->url }}" frameborder="0" allowfullscreen></iframe>
                             </div>
                             <i class="fa fa-user"></i>
-                            <span class="thing__info">
-                                @foreach($thing->players as $player)
+                            <span class="rip__info">
+                                @foreach($rip->players as $player)
                                     <a href="{{ action('PlayerController@show', $player->id) }}">{{ $player->name }}</a>
                                     @if(!$loop->last)
                                         <span>, </span>
@@ -99,13 +99,14 @@
 
                         </div>
                     </div>
+
                 @endforeach
             </div>
 
         </div>
         <div class="row">
             <div class="text-center center">
-                {{ $things->appends(['q' => 'latest'])->links() }}
+                {{ $rips->appends(['q' => 'latest'])->links() }}
             </div>
         </div>
 

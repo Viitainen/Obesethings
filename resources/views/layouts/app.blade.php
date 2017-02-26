@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="{{ $page or '' }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +7,12 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#3d9872">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#3d9872">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#3d9872">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 

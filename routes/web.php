@@ -16,7 +16,6 @@ Route::get('/', function () {
 });
 
 Route::resource('things','ThingController');
-Route::resource('rips','RipsController');
 Route::resource('players','PlayerController');
 Route::resource('registrationkeys', 'RegistrationkeysController', ['except' => ['show','update','edit']]);
 

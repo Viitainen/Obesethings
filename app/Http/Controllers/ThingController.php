@@ -22,15 +22,10 @@ class ThingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        if($request->query('q') == 'byplayer') {
-            $players = Player::has('things')->inRandomOrder()->with('things')->get();
-            return view('thing.index', compact('players'));
-        } else {
-            $things = Thing::latest()->paginate(12);
-            return view('thing.index', compact('things'));
-        }
+        $players = Player::has('things')->inRandomOrder()->with('things')->get();
+        return view('thing.index', compact('players'));
     }
 
     /**

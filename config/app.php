@@ -165,12 +165,10 @@ return [
         Fideloper\Proxy\TrustedProxyServiceProvider::class,
 
 
-
         /*
          * Package Service Providers...
          */
         Collective\Html\HtmlServiceProvider::class,
-        Torann\LaravelMetaTags\MetaTagsServiceProvider::class,
 
         //
 
@@ -231,8 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Form' => Collective\Html\FormFacade::class,
-        'Meta' => Torann\LaravelMetaTags\Facades\MetaTag::class,
+        'Form' => Collective\Html\FormFacade::class
 
     ],
 

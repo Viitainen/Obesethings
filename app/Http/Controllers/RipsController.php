@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Rip;
 use App\Player;
-use App\Thing;
-use App\Http\Requests\StoreThing;
+use App\Http\Requests\StoreRip;
 
-class ThingController extends Controller
+class RipsController extends Controller
 {
-
-
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
@@ -25,11 +23,11 @@ class ThingController extends Controller
     public function index(Request $request)
     {
         if($request->query('q') == 'byplayer') {
-            $players = Player::has('things')->inRandomOrder()->with('things')->get();
-            return view('thing.index', compact('players'));
+            $players = Player::has('rips')->inRandomOrder()->with('rips')->get();
+            return view('rip.index', compact('players'));
         } else {
-            $things = Thing::latest()->paginate(12);
-            return view('thing.index', compact('things'));
+            $rips = Rip::latest()->paginate(12);
+            return view('rip.index', compact('rips'));
         }
     }
 
@@ -41,7 +39,7 @@ class ThingController extends Controller
     public function create()
     {
         $players = Player::pluck('name', 'id');
-        return view('thing.create', compact('players'));
+        return view('rip.create', compact('players'));
     }
 
     /**
@@ -50,13 +48,15 @@ class ThingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreThing $request)
+    public function store(StoreRip $request)
     {
-        $thing = Thing::create(['title' => $request->input('title'), 'url' => $request->input('url')]);
+        $data = $request->input();
+        unset($data['players']);
+        $rip = Rip::create($data);
 
-        $thing->players()->attach($request->input('players'));
+        $rip->players()->attach($request->input('players'));
 
-        return redirect()->action('ThingController@index')->with('status', 'Thing added.');
+        return redirect()->action('RipsController@index')->with('status', 'Rip added.');
     }
 
     /**
@@ -67,8 +67,8 @@ class ThingController extends Controller
      */
     public function show($id)
     {
-        $thing = Thing::with('players')->findOrFail($id);
-        return view('thing.show', compact('thing'));
+        $rip = Rip::with('players')->findOrFail($id);
+        return view('rip.show', compact('rip'));
     }
 
     /**
@@ -79,10 +79,10 @@ class ThingController extends Controller
      */
     public function edit($id)
     {
-        $thing = Thing::with('players')->findOrFail($id);
+        $rip = Rip::with('players')->findOrFail($id);
         $allPlayers = Player::all()->pluck('name','id');
-        $players = $thing->players()->pluck('id')->toArray();
-        return view('thing.edit', compact('thing', 'players', 'allPlayers'));
+        $players = $rip->players()->pluck('id')->toArray();
+        return view('rip.edit', compact('rip', 'players', 'allPlayers'));
     }
 
     /**
@@ -92,13 +92,13 @@ class ThingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreThing $request, $id)
+    public function update(StoreRip $request, $id)
     {
-        $thing = Thing::find($id);
-        $thing->players()->sync($request->input('players'));
+        $rip = Rip::find($id);
+        $rip->players()->sync($request->input('players'));
         unset($request['players']);
-        $thing->update($request->all());
-        return redirect()->action('ThingController@show', $id)->with('status', 'Thing Edited.');
+        $rip->update($request->all());
+        return redirect()->action('RipsController@show', $id)->with('status', 'Rip Edited.');
     }
 
     /**
@@ -109,7 +109,7 @@ class ThingController extends Controller
      */
     public function destroy($id)
     {
-        Thing::findOrFail($id)->delete();
+        Rip::findOrFail($id)->delete();
         return back();
     }
 }

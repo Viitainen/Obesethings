@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 @section('content')
 <div class="container">
@@ -12,6 +13,7 @@
         <div class="col-xs-12">
             <div class="player">
                 <div class="player__slash">
+
                 </div>
                 <h3 class="player__name text-center"><a href="{{ action('PlayerController@show', $player->id) }}">{{ $player->name }}</a></h3>
                 <p class="q player__slogan text-center">
@@ -25,7 +27,7 @@
     </div>
     <div class="row">
         <div class="player__things">
-            @foreach($player->things as $thing)
+            @foreach($things as $thing)
                 <div class="col-md-6">
                     <div class="thing">
                         <h4>{{ $thing->title }}</h4>
@@ -42,11 +44,16 @@
                             @endif
                         </span>
                         <div class="video-container">
-                            <iframe width="100%" height="100%" src="{{ $thing->url }}" frameborder="0" allowfullscreen></iframe>
+                            <iframe width="100%"  height="100%" src="{{ $thing->url }}" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
             @endforeach
+        </div>
+    </div>
+    <div class="row">
+        <div class="text-center">
+            {{ $things->links() }}
         </div>
     </div>
 </div>

@@ -25,10 +25,12 @@
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 @if (!Auth::guest())
-                    <li class="nav__item--blue"><a class="" href="{{ action('ThingController@create') }}">Add New Thing</a></li>
+                    <li class="nav__item--green"><a class="" href="{{ action('ThingController@create') }}">Add New Thing</a></li>
+                    <li class="nav__item--red"><a class="" href="{{ action('RipsController@create') }}">Add New Rip</a></li>
                     <li class="nav_item"><a href="{{ action('RegistrationkeysController@index') }}">Invites</a></li>
                 @endif
                 <li><a href="{{ action('ThingController@index') }}">Things</a></li>
+                <li><a href="{{ action('RipsController@index') }}">Rips</a></li>
                 <li><a href="{{ action('PlayerController@index') }}">Players</a></li>
 
                 <!-- Authentication Links -->

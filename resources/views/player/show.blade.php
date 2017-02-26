@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 @section('content')
 <div class="container">
@@ -26,7 +25,7 @@
     </div>
     <div class="row">
         <div class="player__things">
-            @foreach($things as $thing)
+            @foreach($player->things as $thing)
                 <div class="col-md-6">
                     <div class="thing">
                         <h4>{{ $thing->title }}</h4>
@@ -48,11 +47,6 @@
                     </div>
                 </div>
             @endforeach
-        </div>
-    </div>
-    <div class="row">
-        <div class="text-center">
-            {{ $things->links() }}
         </div>
     </div>
 </div>

@@ -24,7 +24,7 @@ class StoreThing extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:50|min:5|unique:things,
+            'title' => 'required|max:50|min:5|unique:things',
             'url' => 'required|URL|unique:things,
             'players' => 'required'
         ];

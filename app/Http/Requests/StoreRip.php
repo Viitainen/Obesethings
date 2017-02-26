@@ -23,7 +23,7 @@ class StoreRip extends FormRequest
      */
     public function rules()
     {
-
+        dd($this->rip);
         return [
             //'title' => 'required|max:50|min:5|unique:rips,title,'.$this->rip,
             //'url' => 'required|URL|unique:rips,url,'.$this->rip,

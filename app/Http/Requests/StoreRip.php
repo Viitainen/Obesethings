@@ -25,8 +25,10 @@ class StoreRip extends FormRequest
     {
 
         return [
-            'title' => 'required|max:50|min:5|unique:rips,title,'.$this->rip,
-            'url' => 'required|URL|unique:rips,url,'.$this->rip,
+            //'title' => 'required|max:50|min:5|unique:rips,title,'.$this->rip,
+            //'url' => 'required|URL|unique:rips,url,'.$this->rip,
+            'title' => 'required|max:50|min:5|unique:rips',
+            'url' => 'required|URL|unique:rips',
             'place' => 'required|max:50',
             'enemy' => 'required|max:50',
             'level_of_stupidness' => 'required|numeric|max:10|min:1',

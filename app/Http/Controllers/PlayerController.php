@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Player;
+use App\Thing;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePlayer;
 
@@ -54,7 +55,8 @@ class PlayerController extends Controller
     public function show($id)
     {
         $player = Player::findOrFail($id);
-        return view('player.show', compact('player'));
+        $things = $player->things()->paginate(5);
+        return view('player.show', compact('player', 'things'));
     }
 
     /**

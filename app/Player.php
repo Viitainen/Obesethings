@@ -13,4 +13,7 @@ class Player extends Model
         return $this->belongsToMany('App\Thing')->latest()->withTimestamps();
     }
 
+    public function rips() {
+        return $this->belongsToMany('App\Rip')->latest()->withTimestamps();
+    }
 }

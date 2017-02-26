@@ -24,8 +24,8 @@ class StoreThing extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:50|min:5|unique:things,title,'.$this->thing,
-            'url' => 'required|URL|unique:things,url,'.$this->thing,
+            'title' => 'required|max:50|min:5|unique:things,
+            'url' => 'required|URL|unique:things,
             'players' => 'required'
         ];
     }
